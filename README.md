@@ -11,3 +11,4 @@
 截图：
    
    ![](https://github.com/mysteriousmy/shelves-manager-sys/blob/main/image/3.png?raw=true)
+   ![](https://github.com/mysteriousmy/shelves-manager-sys/blob/main/image/4.png?raw=true)
