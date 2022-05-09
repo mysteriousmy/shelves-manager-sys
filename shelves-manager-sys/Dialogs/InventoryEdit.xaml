@@ -1,0 +1,83 @@
+﻿<Window x:Class="shelves_manager_sys.Dialogs.InventoryEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:shelves_manager_sys.Dialogs"
+        xmlns:viewModel="clr-namespace:shelves_manager_sys.ViewModel"
+        mc:Ignorable="d"
+        Title="InventoryEdit" Height="350" Width="400">
+    <Window.DataContext>
+        <viewModel:InventoryAddOrEditViewModel></viewModel:InventoryAddOrEditViewModel>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="选择货物:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"></Label>
+        <Label Grid.Row="1" Grid.Column="0" Content="关联标签:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"></Label>
+        <Label Grid.Row="2" Grid.Column="0" Content="所属货架:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"></Label>
+        <Label Grid.Row="3" Grid.Column="0" Content="放置层数:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"></Label>
+        <ComboBox
+            Grid.Row="0" Grid.Column="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            DisplayMemberPath="cargoName"
+            ItemsSource="{Binding CargosList}"
+            SelectedValue="{Binding CurrentEntity.cargoId}"
+            SelectedValuePath="cargoId" IsEnabled="{Binding IsAdd}">
+            <ComboBox.ItemContainerStyle>
+                <Style TargetType="ComboBoxItem">
+                    <Setter Property="IsEnabled" Value="{Binding IsAdd}" />
+                </Style>
+            </ComboBox.ItemContainerStyle>
+        </ComboBox>
+        <ComboBox
+            Grid.Row="1" Grid.Column="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            DisplayMemberPath="tagCode"
+            ItemsSource="{Binding TagsList}"
+            SelectedValue="{Binding CurrentEntity.tagId}"
+            SelectedValuePath="tgaId">
+            <ComboBox.ItemContainerStyle>
+                <Style TargetType="ComboBoxItem">
+                </Style>
+            </ComboBox.ItemContainerStyle>
+        </ComboBox>
+        <ComboBox
+            Grid.Row="2" Grid.Column="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            DisplayMemberPath="shelveName"
+            ItemsSource="{Binding ShevlesList}"
+            SelectedValue="{Binding Shevles}"
+            SelectedValuePath="shelveId">
+            <ComboBox.ItemContainerStyle>
+                <Style TargetType="ComboBoxItem">
+                </Style>
+            </ComboBox.ItemContainerStyle>
+        </ComboBox>
+        <ComboBox
+            Grid.Row="3" Grid.Column="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            ItemsSource="{Binding LayerList}"
+            SelectedValue="{Binding Layer}">
+            <ComboBox.ItemContainerStyle>
+                <Style TargetType="ComboBoxItem">
+                </Style>
+            </ComboBox.ItemContainerStyle>
+        </ComboBox>
+        <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Fill="Black" Height="1" VerticalAlignment="Bottom"></Rectangle>
+        <Button Content="保存" Width="80" Height="30" Grid.Row="4" Grid.Column="1" Command="{Binding SaveCommand}"></Button>
+    </Grid>
+</Window>

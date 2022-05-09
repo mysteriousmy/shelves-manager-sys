@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="shelves_manager_sys.UserControls.SearchManager"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp" 
+             xmlns:local="clr-namespace:shelves_manager_sys"
+             xmlns:converter="clr-namespace:shelves_manager_sys.Converter"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <converter:IsOnlineConverter x:Key="IsonlineCheckConverter" />
+        <converter:OnlineConverter x:Key="onlineCheckConverter" />
+        <converter:IntStringConverter x:Key="IntStringConverter" />
+        <converter:OnlineStrConverter x:Key="onlineStrConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Height="auto">
+            <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right">
+                <TextBlock Text="选择搜索项目" Foreground="White" VerticalAlignment="Center" Margin="10"/>
+                <ComboBox
+            Grid.Row="0" Grid.Column="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            ItemsSource="{Binding MethodList}"
+            SelectedValue="{Binding CurrentMethod}">
+                    <ComboBox.ItemContainerStyle>
+                        <Style TargetType="ComboBoxItem">
+                            <Setter Property="IsEnabled" Value="{Binding IsAdd}" />
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                </ComboBox>
+                <TextBox Style="{StaticResource SearchTextBox}" Text="{Binding SearchWords}" Margin="10"/>
+                <local:ButtonEx Width="100" Command="{Binding SearchResult}" Margin="15">搜索</local:ButtonEx>
+                
+            </StackPanel>
+
+            <DataGrid  Height="400" x:Name="grd" ItemsSource="{Binding SearchList}"  Margin="20" BorderThickness="0" Background="Transparent" CanUserSortColumns="False" SelectionMode="Single" HorizontalGridLinesBrush="Black" VerticalGridLinesBrush="Black" GridLinesVisibility="None" RowDetailsVisibilityMode="Collapsed" ForceCursor="True"  VerticalScrollBarVisibility="Disabled" Visibility="{Binding NowTable, Converter={StaticResource IsonlineCheckConverter}}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding cargoId}" Header="序号" Width="100" />
+                    <DataGridTextColumn Binding="{Binding cargoName}" Header="货物名称" Width="200" />
+                    <DataGridTextColumn Binding="{Binding position}"  Header="所在货架位置" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

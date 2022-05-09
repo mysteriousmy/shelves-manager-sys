@@ -1,0 +1,32 @@
+﻿<Window x:Class="shelves_manager_sys.Dialogs.CargosEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:shelves_manager_sys.Dialogs"
+        xmlns:viewModel="clr-namespace:shelves_manager_sys.ViewModel"
+        mc:Ignorable="d"
+        Title="ShelvesEdit" Height="170" Width="300">
+    <Window.DataContext>
+        <viewModel:CargosAddOrEditViewModel></viewModel:CargosAddOrEditViewModel>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="货物名称:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"></Label>
+        <Label Grid.Row="1" Grid.Column="0" Content="货物编码（可不填）:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"></Label>
+        <TextBox Grid.Row="0" Grid.Column="2" Width="160" Height="25" Text="{Binding CurrentEntity.cargoName, Mode=TwoWay}"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="3" Width="160" Height="25" Text="{Binding CurrentEntity.cargoId, Mode=TwoWay}"></TextBox>
+        <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Fill="Black" Height="1" VerticalAlignment="Bottom"></Rectangle>
+        <Button Content="保存" Width="80" Height="30" Grid.Row="2" Grid.Column="1" Command="{Binding SaveCommand}"></Button>
+    </Grid>
+</Window>

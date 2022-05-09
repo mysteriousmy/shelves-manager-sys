@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="shelves_manager_sys.UserControls.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:shelves_manager_sys.UserControls"
+      xmlns:uc="clr-namespace:shelves_manager_sys.UserControls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Grid.Row="1" Margin="50 20 15 40">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <uc:InfoCard x:Name="ShevNum" Grid.Column="0" Title="货架总数" Number="19" Icon="Bars" Background1="#827BFF" Background2="#D9B5FF" EllipseBackground1="#B298FD" EllipseBackground2="#E4BBFF"/>
+        <uc:InfoCard x:Name="OutNum" Grid.Column="1" Title="出库货物数" Number="2" Icon="Cubes" Background1="#FD8A87" Background2="#F3AB92" EllipseBackground1="#FBD5A8" EllipseBackground2="#FDB89B"/>
+        <uc:InfoCard x:Name="PutNum" Grid.Column="2" Title="入库货物数" Number="17" Icon="Inbox" Background1="#FC84CB" Background2="#FC8FAE" EllipseBackground1="#FC8FAE" EllipseBackground2="#FFABE6"/>
+    </Grid>
+</UserControl>
