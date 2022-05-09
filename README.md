@@ -9,3 +9,5 @@
   - MySQL 8
 
 截图：
+   
+   ![](https://github.com/mysteriousmy/shelves-manager-sys/blob/main/image/3.png?raw=true)
